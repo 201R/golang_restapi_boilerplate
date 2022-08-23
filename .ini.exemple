@@ -1,0 +1,43 @@
+[app]
+PageSize = 10
+JwtSecret = 233
+PrefixUrl = http://127.0.0.1:8000
+
+RuntimeRootPath = runtime/
+# dev, docker or prod
+Env = dev
+
+LogSavePath = logs/
+LogSaveName = log
+LogFileExt = log
+TimeFormat = 20060102
+
+[server]
+#debug or release
+RunMode = debug
+HttpPort = 8000
+ReadTimeout = 60
+WriteTimeout = 60
+
+[database]
+Type = postgres
+User = postgres
+Password = wJD5Lc7CCsclGbsf
+Host = residences-h2o:europe-west1:residencesh2o
+Port = 5432
+Name = residencesh2o
+Sslmode = disable
+
+
+[logger]
+Output = stdout
+OutputFile = logs/server.log
+# Levels(1:fatal 2:error,3:warn,4:info,5:debug,6:trace)
+Level = 5
+# text/json
+Format = text
+
+#Google Cloud API seting to acces bucket
+[googleCloud]
+BucketName = "residences-h2o.appspot.com"
+CredentialFile = "key.json"

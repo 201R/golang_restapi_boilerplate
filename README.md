@@ -12,6 +12,7 @@ Golang REST API boilerplate for typical project
 ## Features
 
 -   [ ] Database ([entgo](https://github.com/ent/ent)).
+-   [ ] Migration ([atlas](https://github.com/ariga/atlas)).
 -   [ ] Config
 -   [ ] Mailing
 -   [ ] Sign in and sign up via email.
