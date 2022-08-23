@@ -22,10 +22,10 @@ WriteTimeout = 60
 [database]
 Type = postgres
 User = postgres
-Password = wJD5Lc7CCsclGbsf
-Host = residences-h2o:europe-west1:residencesh2o
+Password = 
+Host = 
 Port = 5432
-Name = residencesh2o
+Name = 
 Sslmode = disable
 
 
@@ -39,5 +39,5 @@ Format = text
 
 #Google Cloud API seting to acces bucket
 [googleCloud]
-BucketName = "residences-h2o.appspot.com"
-CredentialFile = "key.json"
+BucketName = 
+CredentialFile = 
