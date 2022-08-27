@@ -13,7 +13,8 @@ Golang REST API boilerplate for typical project
 
 -   [ ] Database ([entgo](https://github.com/ent/ent)).
 -   [ ] Migration ([atlas](https://github.com/ariga/atlas)).
--   [ ] Config
+-   [x] Config
+-   [ ] Rules ([Casbin Rbac](https://github.com/casbin/casbin))
 -   [ ] Mailing
 -   [ ] Sign in and sign up via email.
 -   [ ] Social sign in (Apple, Facebook, Google, Twitter).
