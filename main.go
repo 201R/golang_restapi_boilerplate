@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/201R/golang_restapi_boilerplate/packages/logger"
-	"github.com/201R/golang_restapi_boilerplate/packages/setting"
-	"github.com/201R/golang_restapi_boilerplate/router"
+	"github.com/201R/go_api_boilerplate/packages/logger"
+	"github.com/201R/go_api_boilerplate/packages/setting"
+	"github.com/201R/go_api_boilerplate/router"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )

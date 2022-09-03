@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/201R/golang_restapi_boilerplate/packages/setting"
+	"github.com/201R/go_api_boilerplate/packages/setting"
 	"github.com/sirupsen/logrus"
 )
 
