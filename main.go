@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -10,9 +11,17 @@ import (
 	"github.com/201R/go_api_boilerplate/router"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"golang.org/x/text/language"
 )
 
 func main() {
+
+	bundle := i18n.NewBundle(language.English)
+	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
+	// bundle.MustLoadMessageFile("i18n/translation/en/*.en.json")
+	// bundle.MustLoadMessageFile("i18n/translation/fr/*.fr.json")
+
 	setting.Setup()
 	closeLogFile, err := logger.Setup()
 	if err != nil {
