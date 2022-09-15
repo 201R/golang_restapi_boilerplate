@@ -1,7 +1,6 @@
 package setting
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -71,7 +70,7 @@ func Setup() {
 	if env == "" {
 		env = "local"
 	}
-	cfg, err = ini.Load(fmt.Sprintf("conf/app.%s.ini", env))
+	cfg, err = ini.Load(".ini")
 	if err != nil {
 		log.Fatalf("setting.Setup, fail to parse 'conf/app.ini': %v", err)
 	}
