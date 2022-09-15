@@ -22,10 +22,10 @@ WriteTimeout = 60
 [database]
 Type = postgres
 User = postgres
-Password = 
-Host = 
+Password = root
+Host = localhost
 Port = 5432
-Name = 
+Name = db
 Sslmode = disable
 
 
