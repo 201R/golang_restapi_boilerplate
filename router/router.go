@@ -1,7 +1,11 @@
 package router
 
 import (
+	swaggerFiles "github.com/swaggo/files"     // swagger embed files
+	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
+
 	"github.com/201R/go_api_boilerplate/database"
+	_ "github.com/201R/go_api_boilerplate/docs"
 	"github.com/201R/go_api_boilerplate/repository"
 	v1 "github.com/201R/go_api_boilerplate/router/api/v1"
 	"github.com/201R/go_api_boilerplate/services"
@@ -16,10 +20,11 @@ func InitRouter() *gin.Engine {
 	client := database.Connect()
 	defer client.Close()
 
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	/*
 		====== Setup middlewares ========
 	*/
-
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 

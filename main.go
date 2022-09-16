@@ -15,6 +15,25 @@ import (
 	"golang.org/x/text/language"
 )
 
+// @title Golang Rest API
+// @version 1.0
+// @description This is a real world sample golang Rest API server
+
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name MIT
+// @license.url https://github.com/yhagio/github.com/yhagio/go_api_boilerplate/blob/master/LICENSE
+
+// @host localhost:3000
+// @BasePath /
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 func main() {
 
 	bundle := i18n.NewBundle(language.English)

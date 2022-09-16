@@ -1,0 +1,54 @@
+basePath: /
+definitions:
+  app.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a real world sample golang Rest API server
+  license:
+    name: MIT
+    url: https://github.com/yhagio/github.com/yhagio/go_api_boilerplate/blob/master/LICENSE
+  termsOfService: http://swagger.io/terms/
+  title: Golang Rest API
+  version: "1.0"
+paths:
+  /api/v1/user/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Get user info of given id
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

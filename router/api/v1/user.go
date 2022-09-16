@@ -39,7 +39,13 @@ func (ctl userController) Get(*gin.Context) {
 	panic("unimplemented")
 }
 
-// GetByID implements UserController
+// @Summary Get user info of given id
+// @Produce  json
+// @Param id path int true "ID"
+// @Success 200 {object} app.Response
+// @Failure 400 {object} app.Response
+// @Failure 500 {object} app.Response
+// @Router /api/v1/user/{id} [get]
 func (ctl userController) GetByID(*gin.Context) {
 	panic("unimplemented")
 }
