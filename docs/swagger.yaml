@@ -46,6 +46,8 @@ paths:
           schema:
             $ref: '#/definitions/app.Response'
       summary: Get user info of given id
+      tags:
+      - User
 securityDefinitions:
   ApiKeyAuth:
     in: header

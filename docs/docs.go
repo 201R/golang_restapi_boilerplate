@@ -30,6 +30,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "User"
+                ],
                 "summary": "Get user info of given id",
                 "parameters": [
                     {

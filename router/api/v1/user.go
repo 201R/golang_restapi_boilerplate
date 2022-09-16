@@ -46,6 +46,7 @@ func (ctl userController) Get(*gin.Context) {
 // @Failure 400 {object} app.Response
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user/{id} [get]
+// @tags User
 func (ctl userController) GetByID(*gin.Context) {
 	panic("unimplemented")
 }
