@@ -1,6 +1,9 @@
 package v1
 
 import (
+	"net/http"
+
+	"github.com/201R/go_api_boilerplate/packages/app"
 	"github.com/201R/go_api_boilerplate/services"
 	"github.com/gin-gonic/gin"
 )
@@ -25,18 +28,25 @@ func NewUserController(us services.UserService) UserController {
 }
 
 // Create implements UserController
-func (ctl userController) Create(*gin.Context) {
-	panic("unimplemented")
+func (ctl userController) Create(c *gin.Context) {
+	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
 
-// Delete implements UserController
-func (ctl userController) Delete(*gin.Context) {
-	panic("unimplemented")
+// @Summary Remove user given id
+// @Produce  json
+// @Param id path int true "ID"
+// @Success 200 {object} app.Response
+// @Failure 400 {object} app.Response
+// @Failure 500 {object} app.Response
+// @Router /api/v1/user/{id} [delete]
+// @tags User
+func (ctl userController) Delete(c *gin.Context) {
+	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
 
 // Get implements UserController
-func (ctl userController) Get(*gin.Context) {
-	panic("unimplemented")
+func (ctl userController) Get(c *gin.Context) {
+	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
 
 // @Summary Get user info of given id
@@ -47,11 +57,10 @@ func (ctl userController) Get(*gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user/{id} [get]
 // @tags User
-func (ctl userController) GetByID(*gin.Context) {
-	panic("unimplemented")
+func (ctl userController) GetByID(c *gin.Context) {
+	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
 
-// Update implements UserController
-func (ctl userController) Update(*gin.Context) {
-	panic("unimplemented")
+func (ctl userController) Update(c *gin.Context) {
+	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
