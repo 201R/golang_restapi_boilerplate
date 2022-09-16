@@ -1,8 +1,6 @@
 package services
 
 import (
-	"errors"
-
 	"github.com/201R/go_api_boilerplate/ent"
 	"github.com/201R/go_api_boilerplate/repository"
 )
@@ -21,6 +19,7 @@ func NewUserService(userRepo repository.UserRepository) UserService {
 	}
 }
 
-func (u userService) Get() ([]*ent.User, error) {
-	return nil, errors.New(("not implemented"))
+// Get implements UserService
+func (us *userService) Get() ([]*ent.User, error) {
+	panic("unimplemented")
 }

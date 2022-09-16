@@ -24,5 +24,6 @@ Golang REST API boilerplate for typical project
 -   [ ] Docker.
 -   [ ] CI (Github Actions).
 -   [ ] Monitoring ([Grafana](https://grafana.com/docs/loki/latest/api/))
+-   [ ] Unit Test([Testify](https://github.com/stretchr/testify))
 
 ## Quick run

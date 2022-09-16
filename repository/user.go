@@ -1,8 +1,6 @@
 package repository
 
 import (
-	"errors"
-
 	"github.com/201R/go_api_boilerplate/ent"
 )
 
@@ -25,22 +23,27 @@ func NewUserRepository(client *ent.UserClient) UserRepository {
 	}
 }
 
-func (u *userRepository) Get() ([]*ent.User, error) {
-	return nil, errors.New(("not implemented"))
-}
-
+// Create implements UserRepository
 func (u *userRepository) Create(user *ent.User) (*ent.User, error) {
-	return nil, errors.New(("not implemented"))
+	panic("unimplemented")
 }
 
-func (u *userRepository) Update(id string, user *ent.User) (*ent.User, error) {
-	return nil, errors.New(("not implemented"))
-}
-
+// Delete implements UserRepository
 func (u *userRepository) Delete(id string) (*ent.User, error) {
-	return nil, errors.New(("not implemented"))
+	panic("unimplemented")
 }
 
+// Get implements UserRepository
+func (u *userRepository) Get() ([]*ent.User, error) {
+	panic("unimplemented")
+}
+
+// GetByID implements UserRepository
 func (u *userRepository) GetByID(id string) (*ent.User, error) {
-	return nil, errors.New(("not implemented"))
+	panic("unimplemented")
+}
+
+// Update implements UserRepository
+func (u *userRepository) Update(id string, user *ent.User) (*ent.User, error) {
+	panic("unimplemented")
 }
