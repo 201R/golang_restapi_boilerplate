@@ -8,6 +8,12 @@ Golang REST API boilerplate for typical project
 
 -   [Features](#features)
 -   [Quick run](#quick-run)
+-   [How to use it](#how-to-use-it)
+-   [Comfortable development](#comfortable-development)
+-   [Links](#links)
+-   [Database](#database)
+-   [Tests](#test)
+-   [License](#licence)
 
 ## Features
 
@@ -20,10 +26,22 @@ Golang REST API boilerplate for typical project
 -   [ ] Social sign in (Apple, Facebook, Google, Twitter).
 -   [ ] I18N
 -   [ ] File uploads. Support local and Amazon S3 drivers.
--   [ ] Swagger.
+-   [x] Swagger.
 -   [ ] Docker.
 -   [ ] CI (Github Actions).
 -   [ ] Monitoring ([Grafana](https://grafana.com/docs/loki/latest/api/))
 -   [ ] Unit Test([Testify](https://github.com/stretchr/testify))
 
 ## Quick run
+
+## How to use it
+
+## Comfortable development
+
+## Links
+
+## Database
+
+## License
+
+This project is licensed under the terms of the MIT license.
