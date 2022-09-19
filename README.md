@@ -12,13 +12,13 @@ Golang REST API boilerplate for typical project
 -   [Comfortable development](#comfortable-development)
 -   [Links](#links)
 -   [Database](#database)
--   [Tests](#test)
--   [License](#licence)
+-   [Tests](#tests)
+-   [License](#license)
 
 ## Features
 
 -   [x] Database ([entgo](https://github.com/ent/ent)).
--   [ ] Migration ([atlas](https://github.com/ariga/atlas)).
+-   [x] Migration ([atlas](https://github.com/ariga/atlas)).
 -   [x] Config
 -   [ ] Admin and User roles. ([Casbin Rbac](https://github.com/casbin/casbin))
 -   [x] Mailing

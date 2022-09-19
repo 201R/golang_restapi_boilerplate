@@ -4,8 +4,8 @@ import (
 	swaggerFiles "github.com/swaggo/files"     // swagger embed files
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
 
-	"github.com/201R/go_api_boilerplate/database"
 	_ "github.com/201R/go_api_boilerplate/docs"
+	"github.com/201R/go_api_boilerplate/ent"
 	"github.com/201R/go_api_boilerplate/repository"
 	v1 "github.com/201R/go_api_boilerplate/router/api/v1"
 	"github.com/201R/go_api_boilerplate/services"
@@ -16,9 +16,7 @@ var (
 	router = gin.New()
 )
 
-func InitRouter() *gin.Engine {
-	client := database.Connect()
-	defer client.Close()
+func InitRouter(entClient ent.Client) *gin.Engine {
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -31,7 +29,7 @@ func InitRouter() *gin.Engine {
 	/*
 		====== Setup repositories =======
 	*/
-	userRepo := repository.NewUserRepository(client.User)
+	userRepo := repository.NewUserRepository(entClient.User)
 
 	/*
 		====== Setup Service =======

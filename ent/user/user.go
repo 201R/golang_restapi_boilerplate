@@ -13,6 +13,8 @@ const (
 	FieldLastName = "last_name"
 	// FieldEmail holds the string denoting the email field in the database.
 	FieldEmail = "email"
+	// FieldLocation holds the string denoting the location field in the database.
+	FieldLocation = "location"
 	// FieldPassword holds the string denoting the password field in the database.
 	FieldPassword = "password"
 	// FieldStatus holds the string denoting the status field in the database.
@@ -27,6 +29,7 @@ var Columns = []string{
 	FieldFirstName,
 	FieldLastName,
 	FieldEmail,
+	FieldLocation,
 	FieldPassword,
 	FieldStatus,
 }

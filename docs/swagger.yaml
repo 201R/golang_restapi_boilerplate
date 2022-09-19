@@ -8,6 +8,37 @@ definitions:
       msg:
         type: string
     type: object
+  dtos.UserInput:
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      status:
+        type: boolean
+    type: object
+  ent.User:
+    properties:
+      email:
+        description: Email holds the value of the "email" field.
+        type: string
+      firstName:
+        description: FirstName holds the value of the "firstName" field.
+        type: string
+      id:
+        description: ID of the ent.
+        type: integer
+      lastName:
+        description: LastName holds the value of the "lastName" field.
+        type: string
+      status:
+        description: Status holds the value of the "status" field.
+        type: boolean
+    type: object
 host: localhost:3000
 info:
   contact:
@@ -22,6 +53,55 @@ info:
   title: Golang Rest API
   version: "1.0"
 paths:
+  /api/v1/user:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/app.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/ent.User'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Get all users
+      tags:
+      - User
+    post:
+      parameters:
+      - description: Add user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dtos.UserInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Register user
+      tags:
+      - User
   /api/v1/user/{id}:
     delete:
       parameters:

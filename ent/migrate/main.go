@@ -37,8 +37,7 @@ func main() {
 	}
 
 	db_url := fmt.Sprintf(
-		"%s://%s:%s@%s:%s/%s?sslmode=%s",
-		setting.DatabaseSetting.Type,
+		"postgres://%s:%s@%s:%s/%s?sslmode=%s",
 		setting.DatabaseSetting.User,
 		setting.DatabaseSetting.Password,
 		setting.DatabaseSetting.Host,

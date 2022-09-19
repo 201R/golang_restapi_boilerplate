@@ -29,6 +29,8 @@ func (User) Fields() []ent.Field {
 			}),
 		field.String("lastName").Optional().Nillable().Unique().Match(regexp.MustCompile("[a-zA-Z_]+$")),
 		field.String("email").NotEmpty().Unique(),
+		field.String("location").Optional().Nillable(),
+		// field.String("phone").Optional().Nillable(),
 		field.String("password").Sensitive().NotEmpty(),
 		field.Bool("status").Default(true),
 	}

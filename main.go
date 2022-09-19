@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/201R/go_api_boilerplate/database"
 	"github.com/201R/go_api_boilerplate/packages/logger"
 	"github.com/201R/go_api_boilerplate/packages/setting"
 	"github.com/201R/go_api_boilerplate/router"
@@ -35,13 +36,15 @@ import (
 // @in header
 // @name Authorization
 func main() {
+	setting.Setup()
+	client := database.Connect()
+	defer client.Close()
 
 	bundle := i18n.NewBundle(language.English)
 	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
 	// bundle.MustLoadMessageFile("i18n/translation/en/*.en.json")
 	// bundle.MustLoadMessageFile("i18n/translation/fr/*.fr.json")
 
-	setting.Setup()
 	closeLogFile, err := logger.Setup()
 	if err != nil {
 		logger.Fatal(err)
@@ -56,7 +59,7 @@ func main() {
 		logger.Warnf("Defaulting to port %s", port)
 	}
 
-	routersInit := router.InitRouter()
+	routersInit := router.InitRouter(*client)
 	readTimeout := setting.ServerSetting.ReadTimeout
 	writeTimeout := setting.ServerSetting.WriteTimeout
 	endPoint := fmt.Sprintf(":%s", port)

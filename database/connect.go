@@ -1,39 +1,43 @@
 package database
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
 	"time"
 
 	"entgo.io/ent/dialect"
-	"entgo.io/ent/dialect/sql"
+	entsql "entgo.io/ent/dialect/sql"
 	"github.com/201R/go_api_boilerplate/ent"
 	"github.com/201R/go_api_boilerplate/packages/setting"
+	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-var dataSourceName string
+var db_url string
 
 func Connect() *ent.Client {
-	dataSourceName = fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=%s",
+
+	db_url = fmt.Sprintf(
+		"%s://%s:%s@%s:%s/%s?sslmode=%s",
+		setting.DatabaseSetting.Type,
 		setting.DatabaseSetting.User,
 		setting.DatabaseSetting.Password,
 		setting.DatabaseSetting.Host,
 		setting.DatabaseSetting.Port,
 		setting.DatabaseSetting.Name,
 		setting.DatabaseSetting.Sslmode,
-		// setting.DatabaseSetting.Binary_parameters,
 	)
 
-	sqlDriver, err := sql.Open(dialect.Postgres, dataSourceName)
+	db, err := sql.Open("pgx", db_url)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
-	db := sqlDriver.DB()
 	db.SetMaxIdleConns(10)
 	db.SetMaxOpenConns(100)
 	db.SetConnMaxLifetime(time.Hour)
 
-	client := ent.NewClient(ent.Driver(sqlDriver))
+	drv := entsql.OpenDB(dialect.Postgres, db)
 
 	if setting.AppSetting.Env == "docker" {
 		<-time.After(42 * time.Second)
@@ -53,6 +57,6 @@ func Connect() *ent.Client {
 	// if setting.AppSetting.Env == "dev" || setting.AppSetting.Env == "docker" {
 	// 	Seed(ctx, client)
 	// }
-	return client
+	return ent.NewClient(ent.Driver(drv))
 
 }

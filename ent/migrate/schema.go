@@ -14,6 +14,7 @@ var (
 		{Name: "first_name", Type: field.TypeString, Unique: true, Nullable: true},
 		{Name: "last_name", Type: field.TypeString, Unique: true, Nullable: true},
 		{Name: "email", Type: field.TypeString, Unique: true},
+		{Name: "location", Type: field.TypeString, Nullable: true},
 		{Name: "password", Type: field.TypeString},
 		{Name: "status", Type: field.TypeBool, Default: true},
 	}
