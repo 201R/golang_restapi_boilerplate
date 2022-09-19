@@ -13,20 +13,18 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-var db_url string
+var db_url string = fmt.Sprintf(
+	"%s://%s:%s@%s:%s/%s?sslmode=%s",
+	setting.DatabaseSetting.Type,
+	setting.DatabaseSetting.User,
+	setting.DatabaseSetting.Password,
+	setting.DatabaseSetting.Host,
+	setting.DatabaseSetting.Port,
+	setting.DatabaseSetting.Name,
+	setting.DatabaseSetting.Sslmode,
+)
 
 func Connect() *ent.Client {
-
-	db_url = fmt.Sprintf(
-		"%s://%s:%s@%s:%s/%s?sslmode=%s",
-		setting.DatabaseSetting.Type,
-		setting.DatabaseSetting.User,
-		setting.DatabaseSetting.Password,
-		setting.DatabaseSetting.Host,
-		setting.DatabaseSetting.Port,
-		setting.DatabaseSetting.Name,
-		setting.DatabaseSetting.Sslmode,
-	)
 
 	db, err := sql.Open("pgx", db_url)
 	if err != nil {
