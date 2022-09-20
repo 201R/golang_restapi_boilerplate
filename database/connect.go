@@ -13,18 +13,20 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-var db_url string = fmt.Sprintf(
-	"%s://%s:%s@%s:%s/%s?sslmode=%s",
-	setting.DatabaseSetting.Type,
-	setting.DatabaseSetting.User,
-	setting.DatabaseSetting.Password,
-	setting.DatabaseSetting.Host,
-	setting.DatabaseSetting.Port,
-	setting.DatabaseSetting.Name,
-	setting.DatabaseSetting.Sslmode,
-)
+var db_url string
 
 func Connect() *ent.Client {
+
+	db_url = fmt.Sprintf(
+		"%s://%s:%s@%s:%s/%s?sslmode=%s",
+		setting.DatabaseSetting.Type,
+		setting.DatabaseSetting.User,
+		setting.DatabaseSetting.Password,
+		setting.DatabaseSetting.Host,
+		setting.DatabaseSetting.Port,
+		setting.DatabaseSetting.Name,
+		setting.DatabaseSetting.Sslmode,
+	)
 
 	db, err := sql.Open("pgx", db_url)
 	if err != nil {
@@ -50,7 +52,7 @@ func Connect() *ent.Client {
 	// 	logger.Fatalf("failed creating schema resources: %v", err)
 	// }
 
-	// defer migrateDB(sqlDriver)
+	// defer migrateDB(drv)
 
 	// if setting.AppSetting.Env == "dev" || setting.AppSetting.Env == "docker" {
 	// 	Seed(ctx, client)
@@ -58,3 +60,18 @@ func Connect() *ent.Client {
 	return ent.NewClient(ent.Driver(drv))
 
 }
+
+// func migrateDB(sqlDriver *entsql.Driver) {
+// 	var m *gomigrate.Migrate
+// 	var err error
+
+// 	pg, _ := mpg.WithInstance(sqlDriver.DB(), &mpg.Config{})
+// 	m, err = gomigrate.NewWithDatabaseInstance("file://migrations", "postgre", pg)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	if err := m.Up(); err != nil && err != gomigrate.ErrNoChange {
+// 		log.Fatal(err)
+// 	}
+// }

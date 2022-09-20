@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/201R/go_api_boilerplate/dtos"
@@ -40,10 +39,11 @@ func (ctl userController) Get(c *gin.Context) {
 	ctx := c.Request.Context()
 	users, err := ctl.us.Get(ctx)
 	if err != nil {
-		app.HTTPRes(c, http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError), nil)
+		app.HTTPRes(c, http.StatusInternalServerError, err.Error(), nil)
+		return
 	}
 
-	app.HTTPRes(c, http.StatusCreated, http.StatusText(http.StatusCreated), users)
+	app.HTTPRes(c, http.StatusOK, http.StatusText(http.StatusOK), users)
 }
 
 // @Summary Get user info of given id
@@ -74,11 +74,10 @@ func (ctl userController) Create(c *gin.Context) {
 		app.HTTPRes(c, http.StatusBadRequest, err.Error(), nil)
 		return
 	}
-	fmt.Println(userInput)
 
 	user, err := ctl.us.Create(ctx, userInput)
 	if err != nil {
-		app.HTTPRes(c, http.StatusBadRequest, err.Error(), nil)
+		app.HTTPRes(c, http.StatusInternalServerError, err.Error(), nil)
 		return
 	}
 

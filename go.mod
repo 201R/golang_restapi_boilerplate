@@ -29,6 +29,8 @@ require (
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/uuid v1.3.0 // indirect
+	github.com/hashicorp/errwrap v1.1.0 // indirect
+	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/hcl/v2 v2.10.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.13.0 // indirect
@@ -52,6 +54,7 @@ require (
 	github.com/swaggo/swag v1.8.5 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/zclconf/go-cty v1.8.0 // indirect
+	go.uber.org/atomic v1.7.0 // indirect
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
 	golang.org/x/net v0.0.0-20220909164309-bea034e7d591 // indirect
@@ -64,6 +67,7 @@ require (
 require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-ini/ini v1.67.0
+	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/lib/pq v1.10.6
 	golang.org/x/sys v0.0.0-20220915200043-7b5979e65e41 // indirect
 )
