@@ -2,11 +2,15 @@ package services
 
 import (
 	"github.com/201R/go_api_boilerplate/dtos"
+	"github.com/201R/go_api_boilerplate/ent"
 	"github.com/201R/go_api_boilerplate/repository"
 )
 
 type AuthService interface {
 	Login(input *dtos.AuthInput) (*dtos.LoginReponse, error)
+	Logout() (bool, error)
+	refresh(token string) (*dtos.LoginReponse, error)
+	me(token string) (*ent.User, error)
 }
 
 type authService struct {
@@ -20,6 +24,21 @@ func NewAuthService(userRepo repository.UserRepository) AuthService {
 }
 
 // Login implements AuthService
-func (authService) Login(input *dtos.AuthInput) (*dtos.LoginReponse, error) {
+func (us authService) Login(input *dtos.AuthInput) (*dtos.LoginReponse, error) {
+	panic("unimplemented")
+}
+
+// Logout implements AuthService
+func (authService) Logout() (bool, error) {
+	panic("unimplemented")
+}
+
+// refresh implements AuthService
+func (authService) refresh(token string) (*dtos.LoginReponse, error) {
+	panic("unimplemented")
+}
+
+// me implements AuthService
+func (authService) me(token string) (*ent.User, error) {
 	panic("unimplemented")
 }
