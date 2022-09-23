@@ -1,6 +1,9 @@
 package app
 
 import (
+	"net/http"
+
+	"github.com/201R/go_api_boilerplate/packages/logger"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,9 +16,16 @@ type Response struct {
 
 // HTTPRes normalize HTTP Response format
 func HTTPRes(c *gin.Context, httpCode int, msg string, data interface{}) {
+
+	if httpCode == http.StatusInternalServerError {
+		logger.Error(msg)
+		msg = "Internal server error "
+	}
+
 	c.JSON(httpCode, Response{
 		Code: httpCode,
 		Msg:  msg,
 		Data: data,
 	})
+
 }

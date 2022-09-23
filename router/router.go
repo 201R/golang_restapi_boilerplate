@@ -35,11 +35,13 @@ func InitRouter(entClient ent.Client) *gin.Engine {
 		====== Setup Service =======
 	*/
 	userService := services.NewUserService(userRepo)
+	authService := services.NewAuthService(userRepo)
 
 	/*
 		====== Setup Service =======
 	*/
 	userController := v1.NewUserController(userService)
+	authController := v1.NewAuthController(authService)
 
 	/*
 		====== Setup routes =============
@@ -54,6 +56,14 @@ func InitRouter(entClient ent.Client) *gin.Engine {
 			gUser.POST("", userController.Create)
 			gUser.PUT(":id", userController.Update)
 			gUser.DELETE(":id", userController.Delete)
+		}
+
+		gAuth := gV1.Group("auth")
+		{
+			gAuth.POST("/login", authController.Login)
+			gAuth.POST("/logout", authController.Logout)
+			gAuth.POST("/refresh", authController.Refresh)
+			gAuth.POST("/me", authController.Me)
 		}
 	}
 
