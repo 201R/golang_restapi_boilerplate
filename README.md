@@ -23,6 +23,7 @@ Golang REST API boilerplate for typical project
 -   [ ] Admin and User roles. ([Casbin Rbac](https://github.com/casbin/casbin))
 -   [x] Mailing
 -   [ ] Sign in and sign up via email.
+-   [ ] Redis
 -   [ ] Social sign in (Apple, Facebook, Google, Twitter).
 -   [ ] I18N
 -   [ ] File uploads. Support local and Amazon S3 drivers.

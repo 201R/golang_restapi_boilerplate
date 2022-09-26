@@ -19,6 +19,8 @@ definitions:
     properties:
       access_token:
         type: string
+      token_type:
+        type: string
       user:
         $ref: '#/definitions/ent.User'
     type: object
@@ -37,6 +39,9 @@ definitions:
     type: object
   ent.User:
     properties:
+      created_at:
+        description: CreatedAt holds the value of the "created_at" field.
+        type: string
       email:
         description: Email holds the value of the "email" field.
         type: string
@@ -45,7 +50,7 @@ definitions:
         type: string
       id:
         description: ID of the ent.
-        type: integer
+        type: string
       lastName:
         description: LastName holds the value of the "lastName" field.
         type: string
@@ -58,6 +63,9 @@ definitions:
       status:
         description: Status holds the value of the "status" field.
         type: boolean
+      updated_at:
+        description: UpdatedAt holds the value of the "updated_at" field.
+        type: string
     type: object
 host: localhost:3000
 info:
@@ -193,6 +201,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - ApiKeyAuth: []
       summary: Get all users
       tags:
       - User
@@ -219,6 +229,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - ApiKeyAuth: []
       summary: Register user
       tags:
       - User
@@ -245,6 +257,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - ApiKeyAuth: []
       summary: Remove user given id
       tags:
       - User
@@ -270,6 +284,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - ApiKeyAuth: []
       summary: Get user info of given id
       tags:
       - User

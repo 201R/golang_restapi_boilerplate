@@ -1,13 +1,16 @@
 package services
 
 import (
+	"context"
+
 	"github.com/201R/go_api_boilerplate/dtos"
 	"github.com/201R/go_api_boilerplate/ent"
+	"github.com/201R/go_api_boilerplate/packages/helpers"
 	"github.com/201R/go_api_boilerplate/repository"
 )
 
 type AuthService interface {
-	Login(input *dtos.AuthInput) (*dtos.LoginReponse, error)
+	Login(ctx context.Context, input *dtos.AuthInput) (*dtos.LoginReponse, error)
 	Logout() (bool, error)
 	refresh(token string) (*dtos.LoginReponse, error)
 	me(token string) (*ent.User, error)
@@ -24,8 +27,26 @@ func NewAuthService(userRepo repository.UserRepository) AuthService {
 }
 
 // Login implements AuthService
-func (us authService) Login(input *dtos.AuthInput) (*dtos.LoginReponse, error) {
-	panic("unimplemented")
+func (us authService) Login(ctx context.Context, input *dtos.AuthInput) (*dtos.LoginReponse, error) {
+	user, err := us.Repo.GetByEmail(ctx, input.Email)
+	if err != nil {
+		return nil, err
+	}
+
+	if err = helpers.VerifyPassword(user.Password, input.Password); err != nil {
+		return nil, err
+	}
+
+	token, err := helpers.GenerateToken(user.ID, "role")
+	if err != nil {
+		return nil, err
+	}
+
+	return &dtos.LoginReponse{
+		Access_token: token,
+		User:         *user,
+		Token_type:   "Bearer",
+	}, nil
 }
 
 // Logout implements AuthService

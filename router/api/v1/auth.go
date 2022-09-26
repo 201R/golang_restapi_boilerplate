@@ -3,6 +3,7 @@ package v1
 import (
 	"net/http"
 
+	"github.com/201R/go_api_boilerplate/dtos"
 	"github.com/201R/go_api_boilerplate/packages/app"
 	"github.com/201R/go_api_boilerplate/services"
 	"github.com/gin-gonic/gin"
@@ -35,8 +36,22 @@ func NewAuthController(as services.AuthService) AuthController {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/auth/login [post]
 // @tags Auth
-func (authController) Login(c *gin.Context) {
-	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
+func (ctl authController) Login(c *gin.Context) {
+	ctx := c.Request.Context()
+	var authInput dtos.AuthInput
+
+	if err := c.ShouldBindJSON(&authInput); err != nil {
+		app.HTTPRes(c, http.StatusBadRequest, err.Error(), nil)
+		return
+	}
+
+	loginResponse, err := ctl.as.Login(ctx, &authInput)
+	if err != nil {
+		app.HTTPRes(c, http.StatusUnauthorized, err.Error(), nil)
+		return
+	}
+
+	app.HTTPRes(c, http.StatusCreated, http.StatusText(http.StatusAccepted), loginResponse)
 }
 
 // Logout implements AuthController

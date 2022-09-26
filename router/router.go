@@ -63,7 +63,7 @@ func InitRouter(entClient ent.Client) *gin.Engine {
 			gAuth.POST("/login", authController.Login)
 			gAuth.POST("/logout", authController.Logout)
 			gAuth.POST("/refresh", authController.Refresh)
-			gAuth.POST("/me", authController.Me)
+			gAuth.GET("/me", authController.Me)
 		}
 	}
 

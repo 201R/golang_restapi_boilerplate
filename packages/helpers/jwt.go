@@ -9,13 +9,13 @@ import (
 var jwtSecret []byte
 
 type Claims struct {
-	UserID   uint   `json:"userId"`
+	UserID   string `json:"userId"`
 	UserRole string `json:"userRole"`
 	jwt.StandardClaims
 }
 
 // GenerateToken generate tokens used for auth
-func GenerateToken(id uint, role string) (string, error) {
+func GenerateToken(id string, role string) (string, error) {
 	nowTime := time.Now()
 	expireTime := nowTime.Add(3 * time.Hour)
 

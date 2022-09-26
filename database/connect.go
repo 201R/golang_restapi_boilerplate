@@ -9,6 +9,7 @@ import (
 	"entgo.io/ent/dialect"
 	entsql "entgo.io/ent/dialect/sql"
 	"github.com/201R/go_api_boilerplate/ent"
+	_ "github.com/201R/go_api_boilerplate/ent/runtime"
 	"github.com/201R/go_api_boilerplate/packages/setting"
 	_ "github.com/jackc/pgx/v4/stdlib"
 )

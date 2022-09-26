@@ -35,6 +35,7 @@ func NewUserController(us services.UserService) UserController {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user [get]
 // @tags User
+// @Security ApiKeyAuth
 func (ctl userController) Get(c *gin.Context) {
 	ctx := c.Request.Context()
 	users, err := ctl.us.Get(ctx)
@@ -54,6 +55,7 @@ func (ctl userController) Get(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user/{id} [get]
 // @tags User
+// @Security ApiKeyAuth
 func (ctl userController) GetByID(c *gin.Context) {
 	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }
@@ -66,6 +68,7 @@ func (ctl userController) GetByID(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user [post]
 // @tags User
+// @Security ApiKeyAuth
 func (ctl userController) Create(c *gin.Context) {
 	ctx := c.Request.Context()
 	var userInput dtos.UserInput
@@ -96,6 +99,7 @@ func (ctl userController) Update(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/user/{id} [delete]
 // @tags User
+// @Security ApiKeyAuth
 func (ctl userController) Delete(c *gin.Context) {
 	app.HTTPRes(c, http.StatusNotImplemented, http.StatusText(http.StatusNotImplemented), nil)
 }

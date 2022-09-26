@@ -201,6 +201,11 @@ const docTemplate = `{
         },
         "/api/v1/user": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -239,6 +244,11 @@ const docTemplate = `{
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -281,6 +291,11 @@ const docTemplate = `{
         },
         "/api/v1/user/{id}": {
             "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -319,6 +334,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -388,6 +408,9 @@ const docTemplate = `{
                 "access_token": {
                     "type": "string"
                 },
+                "token_type": {
+                    "type": "string"
+                },
                 "user": {
                     "$ref": "#/definitions/ent.User"
                 }
@@ -416,6 +439,10 @@ const docTemplate = `{
         "ent.User": {
             "type": "object",
             "properties": {
+                "created_at": {
+                    "description": "CreatedAt holds the value of the \"created_at\" field.",
+                    "type": "string"
+                },
                 "email": {
                     "description": "Email holds the value of the \"email\" field.",
                     "type": "string"
@@ -426,7 +453,7 @@ const docTemplate = `{
                 },
                 "id": {
                     "description": "ID of the ent.",
-                    "type": "integer"
+                    "type": "string"
                 },
                 "lastName": {
                     "description": "LastName holds the value of the \"lastName\" field.",
@@ -443,6 +470,10 @@ const docTemplate = `{
                 "status": {
                     "description": "Status holds the value of the \"status\" field.",
                     "type": "boolean"
+                },
+                "updated_at": {
+                    "description": "UpdatedAt holds the value of the \"updated_at\" field.",
+                    "type": "string"
                 }
             }
         }

@@ -9,5 +9,6 @@ type AuthInput struct {
 
 type LoginReponse struct {
 	Access_token string   `json:"access_token"`
+	Token_type   string   `json:"token_type"`
 	User         ent.User `json:"user"`
 }
