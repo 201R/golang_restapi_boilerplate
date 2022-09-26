@@ -2,7 +2,7 @@
 
 ## Description
 
-Golang REST API boilerplate for typical project
+Golang REST API boilerplate for typical project, including interactive API documentation.
 
 ## Interactive API documentation
 
