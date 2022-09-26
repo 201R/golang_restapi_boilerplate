@@ -4,6 +4,10 @@
 
 Golang REST API boilerplate for typical project
 
+## Interactive API documentation
+
+[![API docs](img/swagger.png)](https://github.com/201R/golang_restapi_boilerplate)
+
 ## Table of Contents
 
 -   [Features](#features)
