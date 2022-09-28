@@ -67,7 +67,7 @@ definitions:
         description: UpdatedAt holds the value of the "updated_at" field.
         type: string
     type: object
-host: localhost:3000
+host: localhost:8080
 info:
   contact:
     email: support@swagger.io

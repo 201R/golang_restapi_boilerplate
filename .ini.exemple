@@ -20,10 +20,10 @@ ReadTimeout = 60
 WriteTimeout = 60
 
 [database]
-Type = postgres
+Type = postgresql
 User = postgres
-Password = root
-Host = localhost
+Password = password
+Host = postgres
 Port = 5432
 Name = db
 Sslmode = disable

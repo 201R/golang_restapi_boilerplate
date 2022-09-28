@@ -32,6 +32,7 @@ Golang REST API boilerplate for typical project, including interactive API docum
 -   [ ] I18N
 -   [ ] File uploads. Support local and Amazon S3 drivers.
 -   [x] Swagger.
+-   [ ] nginx.
 -   [ ] Docker.
 -   [ ] CI (Github Actions).
 -   [ ] Monitoring ([Grafana](https://grafana.com/docs/loki/latest/api/))
@@ -39,11 +40,26 @@ Golang REST API boilerplate for typical project, including interactive API docum
 
 ## Quick run
 
+```bash
+git clone --depth 1 https://github.com/201R/golang_restapi_boilerplate.git my-app
+cd my-app/
+cp .ini.exemple .ini
+docker-compose up -d
+```
+
+For check status run
+
+```bash
+docker-compose logs
+```
+
 ## How to use it
 
 ## Comfortable development
 
 ## Links
+
+-   Swagger: http://localhost:8080/swagger/index.html
 
 ## Database
 

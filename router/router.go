@@ -6,9 +6,11 @@ import (
 
 	_ "github.com/201R/go_api_boilerplate/docs"
 	"github.com/201R/go_api_boilerplate/ent"
+	"github.com/201R/go_api_boilerplate/packages/setting"
 	"github.com/201R/go_api_boilerplate/repository"
 	v1 "github.com/201R/go_api_boilerplate/router/api/v1"
 	"github.com/201R/go_api_boilerplate/services"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -25,6 +27,12 @@ func InitRouter(entClient ent.Client) *gin.Engine {
 	*/
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
+	if setting.AppSetting.Env != "dev" {
+		config := cors.DefaultConfig()
+		config.AllowHeaders = []string{"*"}
+		config.AllowOrigins = []string{"http://localhost:8090", "http://127.0.0.1:8090", "http://127.0.0.1:8080", "*"}
+		router.Use(cors.New(config))
+	}
 
 	/*
 		====== Setup repositories =======

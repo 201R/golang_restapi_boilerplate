@@ -1,0 +1,62 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: postgres_db
+    restart: always
+    ports:
+      - '6001:5432'
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      example-network:
+        ipv4_address: 172.16.238.10
+
+  redis:
+    image: 'bitnami/redis:latest'
+    container_name: redis_cache
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes: 
+      - redis_data:/bitnami/redis/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - REDIS_PASSWORD=password123 
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    networks:
+      example-network:
+        ipv4_address: 172.16.238.11
+
+  api:
+    container_name: api
+    build: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      example-network:
+        ipv4_address: 172.16.238.12
+    # command: [ "./wait-for-it.sh", "postgres:5432" ]
+
+volumes:
+  pgdata:
+  redis_data:
+    driver: local
+networks:
+  example-network:
+    name: example-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
