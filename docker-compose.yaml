@@ -16,6 +16,12 @@ services:
     networks:
       example-network:
         ipv4_address: 172.16.238.10
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
   redis:
     image: 'bitnami/redis:latest'
@@ -37,7 +43,7 @@ services:
     container_name: api
     build: .
     ports:
-      - '8080:8080'
+      - '8090:8090'
     volumes:
       - .:/app
     depends_on:

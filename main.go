@@ -25,7 +25,7 @@ import (
 // @contact.email support@swagger.io
 // @license.name MIT
 // @license.url https://github.com/yhagio/github.com/yhagio/go_api_boilerplate/blob/master/LICENSE
-// @host localhost:8080
+// @host localhost:8090
 // @BasePath /
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
@@ -50,7 +50,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8090"
 		logger.Warnf("Defaulting to port %s", port)
 	}
 

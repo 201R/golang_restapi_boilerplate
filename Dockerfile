@@ -12,6 +12,6 @@ RUN install -o root -g root -m 0755 ./atlas-linux-amd64-latest /usr/local/bin/at
 RUN swag init
 # RUN 
 
-EXPOSE 8080
-CMD go build . && atlas migrate apply  --dir "file://migrations" --url "postgres://postgres:password@postgres:5432/db?sslmode=disable" && ./go_api_boilerplate
+EXPOSE 8090
+CMD go build . && atlas migrate apply  --dir 'file://migrations' --url 'postgres://postgres:password@postgres:5432/db?sslmode=disable' && ./go_api_boilerplate
 

@@ -33,6 +33,7 @@ Golang REST API boilerplate for typical project, including interactive API docum
 -   [ ] File uploads. Support local and Amazon S3 drivers.
 -   [x] Swagger.
 -   [ ] nginx.
+-   [x] Adminer([Adminer](https://www.adminer.org/))
 -   [ ] Docker.
 -   [ ] CI (Github Actions).
 -   [ ] Monitoring ([Grafana](https://grafana.com/docs/loki/latest/api/))
@@ -59,7 +60,8 @@ docker-compose logs
 
 ## Links
 
--   Swagger: http://localhost:8080/swagger/index.html
+-   Swagger: http://localhost:8090/swagger/index.html
+-   Adminer: http://localhost:8080/
 
 ## Database
 
