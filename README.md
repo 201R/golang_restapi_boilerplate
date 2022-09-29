@@ -68,21 +68,27 @@ Assuming you have a working Go environment and `GOPATH/bin` is in your
 go get github.com/codegangsta/gin
 ```
 
+-   Pull code
+
 ```bash
 git clone --depth 1 https://github.com/201R/golang_restapi_boilerplate.git my-app
 cd my-app/
 cp .ini.exemple .ini
 ```
 
-Change `Host=postgres` to `Host=localhost`
+-   Update .ini file
+
+change `Host=postgres` to `Host=localhost`
 
 <!-- Change `MAIL_HOST=maildev` to `MAIL_HOST=localhost` -->
 
-Run additional container:
+-   Run additional container
 
 ```bash
 docker-compose up -d postgres adminer redis
 ```
+
+-   Start App
 
 ```bash
 go mod download
