@@ -59,6 +59,41 @@ docker-compose logs
 
 ## Comfortable development
 
+-   Install Gin Hot reload
+
+Assuming you have a working Go environment and `GOPATH/bin` is in your
+`PATH`, `gin` is a breeze to install:
+
+```bash
+go get github.com/codegangsta/gin
+```
+
+```bash
+git clone --depth 1 https://github.com/201R/golang_restapi_boilerplate.git my-app
+cd my-app/
+cp .ini.exemple .ini
+```
+
+Change `Host=postgres` to `Host=localhost`
+
+<!-- Change `MAIL_HOST=maildev` to `MAIL_HOST=localhost` -->
+
+Run additional container:
+
+```bash
+docker-compose up -d postgres adminer redis
+```
+
+```bash
+go mod download
+
+go run -mod=mod ariga.io/atlas/cmd/atlas@master migrate apply \
+  --dir "file://migrations"
+  --url "postgres://postgres:password@postgres:5432/db?sslmode=disable"
+
+gin -a 3000 -p 8090 -i
+```
+
 ## Links
 
 -   Swagger: http://localhost:8090/swagger/index.html
