@@ -18,7 +18,7 @@ Golang REST API boilerplate for typical project, including interactive API docum
 
 ## Interactive API documentation
 
-[![API docs](img/swagger.png)](https://github.com/201R/golang_restapi_boilerplate)
+[![API docs](.github/swagger.png)](https://github.com/201R/golang_restapi_boilerplate)
 
 ## Features
 
