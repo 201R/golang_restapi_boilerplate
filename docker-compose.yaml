@@ -16,7 +16,7 @@ services:
     networks:
       example-network:
         ipv4_address: 172.16.238.10
-    
+
   adminer:
     image: adminer
     restart: always
