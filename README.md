@@ -97,7 +97,7 @@ go mod download
 
 go run -mod=mod ariga.io/atlas/cmd/atlas@master migrate apply \
   --dir "file://migrations"
-  --url "postgres://postgres:password@postgres:5432/db?sslmode=disable"
+  --url "postgres://postgres:password@localhost:6001/db?sslmode=disable"
 
 gin -a 3000 -p 8090 -i
 ```

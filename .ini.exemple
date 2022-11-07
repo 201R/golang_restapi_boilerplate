@@ -23,11 +23,10 @@ WriteTimeout = 60
 Type = postgresql
 User = postgres
 Password = password
-Host = postgres
-Port = 5432
+Host = localhost
+Port = 6001
 Name = db
 Sslmode = disable
-
 
 [logger]
 Output = stdout
